@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ng-rspack-example-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-root',
+  // TODO(jack): use external template when it is supported
+  // templateUrl: './app.component.html'
+  template: ` <h1>Hello {{ title }}!</h1> `,
 })
 export class AppComponent {
-  title = 'ng-rspack-example';
+  title = 'rspack-ng';
 }

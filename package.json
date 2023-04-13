@@ -1,5 +1,5 @@
 {
-  "name": "ng-rspack-example",
+  "name": "demo",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -18,6 +18,9 @@
     "@angular/platform-browser-dynamic": "~15.2.0",
     "@angular/router": "~15.2.0",
     "@nrwl/angular": "15.9.2",
+    "@rspack/binding-darwin-x64": "file:artifacts/darwin-x64",
+    "@rspack/cli": "file:artifacts/rspack-cli",
+    "@rspack/core": "~0.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -37,8 +40,11 @@
     "@nrwl/jest": "15.9.2",
     "@nrwl/js": "15.9.2",
     "@nrwl/linter": "15.9.2",
+    "@nrwl/rspack": "^15.9.5",
     "@nrwl/web": "15.9.2",
     "@nrwl/workspace": "15.9.2",
+    "@rspack/dev-server": "~0.1.0",
+    "@rspack/plugin-minify": "~0.1.0",
     "@schematics/angular": "~15.2.0",
     "@types/jest": "^29.4.0",
     "@types/node": "16.11.7",

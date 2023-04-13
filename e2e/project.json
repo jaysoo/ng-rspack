@@ -8,26 +8,32 @@
       "executor": "@nrwl/cypress:cypress",
       "options": {
         "cypressConfig": "e2e/cypress.config.ts",
-        "devServerTarget": "ng-rspack-example:serve:development",
+        "devServerTarget": "demo:serve:development",
         "testingType": "e2e"
       },
       "configurations": {
         "production": {
-          "devServerTarget": "ng-rspack-example:serve:production"
+          "devServerTarget": "demo:serve:production"
         },
         "ci": {
-          "devServerTarget": "ng-rspack-example:serve-static"
+          "devServerTarget": "demo:serve-static"
         }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["ng-rspack-example"]
+  "implicitDependencies": [
+    "demo"
+  ]
 }

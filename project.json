@@ -1,22 +1,69 @@
 {
-  "name": "ng-rspack-example",
+  "name": "demo",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "ng-rspack-example",
+  "prefix": "demo",
   "sourceRoot": "./src",
   "tags": [],
   "targets": {
+    "build-rs": {
+      "executor": "@nrwl/rspack:rspack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "web",
+        "outputPath": "dist/demo",
+        "main": "src/main.ts",
+        "tsConfig": "tsconfig.app.json",
+        "rspackConfig": "rspack.config.js",
+        "assets": [
+          "src/favicon.ico",
+          "src/assets"
+        ]
+      },
+      "configurations": {
+        "development": {
+          "mode": "development"
+        },
+        "production": {
+          "mode": "production",
+          "optimization": true,
+          "sourceMap": false
+        }
+      }
+    },
+    "serve-rs": {
+      "executor": "@nrwl/rspack:dev-server",
+      "options": {
+        "buildTarget": "demo:build-rs:development"
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "buildTarget": "demo:build-rs:production"
+        }
+      }
+    },
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
-        "outputPath": "dist/ng-rspack-example",
+        "outputPath": "dist/demo",
         "index": "./src/index.html",
         "main": "./src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "./tsconfig.app.json",
-        "assets": ["./src/favicon.ico", "./src/assets"],
-        "styles": ["./src/styles.css"],
+        "assets": [
+          "./src/favicon.ico",
+          "./src/assets"
+        ],
+        "styles": [],
         "scripts": []
       },
       "configurations": {
@@ -50,10 +97,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "ng-rspack-example:build:production"
+          "browserTarget": "demo:build:production"
         },
         "development": {
-          "browserTarget": "ng-rspack-example:build:development"
+          "browserTarget": "demo:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -61,19 +108,26 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "ng-rspack-example:build"
+        "browserTarget": "demo:build"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["./src/**/*.ts", "./src/**/*.html"]
+        "lintFilePatterns": [
+          "./src/**/*.ts",
+          "./src/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectName}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectName}"
+      ],
       "options": {
         "jestConfig": "jest.config.ts",
         "passWithNoTests": true
@@ -88,7 +142,7 @@
     "serve-static": {
       "executor": "@nrwl/web:file-server",
       "options": {
-        "buildTarget": "ng-rspack-example:build"
+        "buildTarget": "demo:build"
       }
     }
   }

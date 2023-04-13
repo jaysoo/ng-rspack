@@ -1,0 +1,23 @@
+{
+  "name": "@rspack/dev-middleware",
+  "version": "0.1.4",
+  "license": "MIT",
+  "description": "Development middleware for rspack",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w"
+  },
+  "homepage": "https://rspack.dev",
+  "bugs": "https://github.com/web-infra-dev/rspack/issues",
+  "repository": "web-infra-dev/rspack",
+  "dependencies": {
+    "@rspack/core": "file:../rspack",
+    "webpack-dev-middleware": "6.0.2",
+    "mime-types": "2.1.35"
+  },
+  "devDependencies": {
+    "@types/mime-types": "2.1.1"
+  }
+}
