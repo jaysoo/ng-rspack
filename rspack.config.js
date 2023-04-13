@@ -11,31 +11,15 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
    *  @type {() => import('@rspack/cli').Configuration}
    */
   const config = {
-    mode: 'production',
-    devtool: false,
-    target: ['web', 'es2015'],
-    entry: {
-      //polyfills: ['zone.js'],
-      main: ['./src/main.ts'],
-    },
-    output: {
-      uniqueName: 'ng-rspack',
-      // 'hashFunction': 'xxhash64', // throws error
-      // 'clean': true, // throws error
-      publicPath: '',
-      filename: '[name].[contenthash:20].js',
-      chunkFilename: '[name].[contenthash:20].js',
-      // 'crossOriginLoading': false, // throws error
-      // 'trustedTypes': 'angular#bundler', // throws error
-      // 'scriptType': 'module' // throws error
-    },
-    watch: false,
+    ...baseConfig,
     // snapshot: {module: {hash: false}},
     // performance: {hints: false}, // throws error
+    cache: true,
     experiments: {
       // 'backCompat': false, // throws error
       // 'syncWebAssembly': true, // throws error
       asyncWebAssembly: true,
+      //incrementalRebuild: true,
     },
     optimization: {
       runtimeChunk: false,
@@ -59,10 +43,6 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
         },
       },
     },
-    builtins: {
-      ...baseConfig.builtins,
-    },
-    resolve: baseConfig.resolve,
     module: {
       parser: {
         javascript: {
