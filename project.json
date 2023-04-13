@@ -14,7 +14,7 @@
       "defaultConfiguration": "production",
       "options": {
         "target": "web",
-        "outputPath": "dist/demo",
+        "outputPath": "dist/demo-rs",
         "main": "src/main.ts",
         "tsConfig": "tsconfig.app.json",
         "rspackConfig": "rspack.config.js",
