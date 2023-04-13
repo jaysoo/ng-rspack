@@ -13,3 +13,9 @@ nx build
 nx serve-rs
 nx build-rs
 ```
+
+## Notes
+
+- `artifacts` folder has a build of Rspack with missing compiler hooks. This will be released to npm soon.
+- Some features are missing, such as external templates and styles.
+- Sorting entry chunks is not working, thus `import 'zone.js'` is added to `src/main.ts`. This has been [fixed](https://github.com/web-infra-dev/rspack/pull/2634) but not released.
