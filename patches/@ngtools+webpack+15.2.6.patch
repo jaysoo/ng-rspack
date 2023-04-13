@@ -1,0 +1,22 @@
+diff --git a/node_modules/@ngtools/webpack/src/ivy/plugin.js b/node_modules/@ngtools/webpack/src/ivy/plugin.js
+index c8208ee..10b8afd 100755
+--- a/node_modules/@ngtools/webpack/src/ivy/plugin.js
++++ b/node_modules/@ngtools/webpack/src/ivy/plugin.js
+@@ -142,7 +142,7 @@ class AngularWebpackPlugin {
+         this.watchMode = compiler.watchMode;
+         // Initialize webpack cache
+         if (!this.webpackCache && compilation.options.cache) {
+-            this.webpackCache = compilation.getCache(PLUGIN_NAME);
++            // this.webpackCache = compilation.getCache(PLUGIN_NAME);
+         }
+         // Initialize the resource loader if not already setup
+         if (!state.resourceLoader) {
+@@ -300,7 +300,7 @@ class AngularWebpackPlugin {
+                 filesToRebuild.add(requiredFile);
+             }
+         }
+-        if (filesToRebuild.size > 0) {
++        if (false /*filesToRebuild.size > 0*/) {
+             const rebuild = (webpackModule) => new Promise((resolve) => compilation.rebuildModule(webpackModule, () => resolve()));
+             const modulesToRebuild = [];
+             for (const webpackModule of modules) {

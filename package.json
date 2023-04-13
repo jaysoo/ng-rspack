@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "postinstall": "patch-package"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +59,7 @@
     "jest-environment-jsdom": "^29.4.1",
     "jest-preset-angular": "~13.0.0",
     "nx": "15.9.2",
+    "patch-package": "^6.5.1",
     "prettier": "^2.6.2",
     "ts-jest": "^29.0.5",
     "ts-node": "10.9.1",
