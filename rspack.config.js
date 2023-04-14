@@ -70,10 +70,7 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
                 '@angular-devkit/build-angular/src/babel/webpack-loader.js'
               ),
               options: {
-                cacheDirectory: path.join(
-                  __dirname,
-                  '/.angular/cache/15.2.4/babel-webpack'
-                ),
+                cacheDirectory: null,
                 aot: true,
                 optimize: true,
                 supportedBrowsers: [
