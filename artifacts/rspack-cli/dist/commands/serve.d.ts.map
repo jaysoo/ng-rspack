@@ -1,1 +1,0 @@
-{"version":3,"file":"serve.d.ts","sourceRoot":"","sources":["../../src/commands/serve.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,SAAS,EAAE,MAAM,eAAe,CAAC;AAE/C,OAAO,EAAE,aAAa,EAAE,MAAM,UAAU,CAAC;AAGzC,qBAAa,YAAa,YAAW,aAAa;IAC3C,KAAK,CAAC,GAAG,EAAE,SAAS,GAAG,OAAO,CAAC,IAAI,CAAC;CAmG1C"}

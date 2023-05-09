@@ -1,1 +1,0 @@
-{"version":3,"file":"ConcurrentCompilationError.js","sourceRoot":"","sources":["../../src/error/ConcurrentCompilationError.ts"],"names":[],"mappings":";AAAA;;;;;;;;GAQG;;AAEH,MAAqB,0BAA2B,SAAQ,KAAK;IAI5D;QACC,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,IAAI,GAAG,4BAA4B,CAAC;QACzC,IAAI,CAAC,OAAO;YACX,8FAA8F,CAAC;IACjG,CAAC;CACD;AAVD,6CAUC"}
