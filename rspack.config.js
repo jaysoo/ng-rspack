@@ -1,4 +1,4 @@
-const { composePlugins, withNx, withWeb } = require('@nrwl/rspack');
+const { composePlugins, withNx, withWeb } = require('@nx/rspack');
 const { AngularWebpackPlugin } = require("@ngtools/webpack");
 
 // const {DedupeModuleResolvePlugin} = require('@angular-devkit/build-angular/src/webpack/plugins/dedupe-module-resolve-plugin');
@@ -10,7 +10,8 @@ const {
 } = require("@angular-devkit/build-angular/src/webpack/plugins/occurrences-plugin");
 const path = require("path");
 
-module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
+module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
+  console.log(ctx)
   /*
    *  @type {() => import('@rspack/cli').Configuration}
    */
@@ -28,10 +29,10 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
       extensions: [".ts", ".js"]
     },
     output: {
-      uniqueName: "zackAngularCli",
+      uniqueName: "nx-rspack",
       // 'hashFunction': 'xxhash64', // throws error
       clean: true,
-      // path: "./dist",
+      path: ctx.options.outputPath,
       publicPath: "",
       filename: "[name].[contenthash:20].js",
       chunkFilename: "[name].[contenthash:20].js",
@@ -71,6 +72,9 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig) => {
       }
     },
     builtins: {
+      define: {
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      },
       html: [
         {
           template: "./src/index.html"

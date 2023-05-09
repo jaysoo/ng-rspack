@@ -14,9 +14,11 @@ nx serve-rs
 nx build-rs
 ```
 
-## Notes
+## Benchmarks
 
-- `artifacts` folder has a build of Rspack with missing compiler hooks. This will be released to npm soon.
-- Some features are missing, such as external templates and styles.
-- Sorting entry chunks is not working, thus `import 'zone.js'` is added to `src/main.ts`. This has been [fixed](https://github.com/web-infra-dev/rspack/pull/2634) but not released.
-- `@ngtools/webpack` has issues due to missing cache feature and missing `RebuildModule` on compilation. This is patched out by using `patch-package`.
+Using [`hyperfine`](https://github.com/sharkdp/hyperfine).
+
+```shell
+hyperfine --warmup 3 --min-runs 100 -n "Angular Devkit" "nx build --skip-nx-cache" -n "Rspack" "nx build-rs --skip-nx-cache"
+```
+
