@@ -48,29 +48,30 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
       // 'syncWebAssembly': true, // throws error
       asyncWebAssembly: true
     },
-    optimization: {
-      runtimeChunk: false,
-      minimize: true,
-      splitChunks: {
-        // 'maxAsyncRequests': null, // throws error
-        cacheGroups: {
-          default: {
-            chunks: "async",
-            minChunks: 2,
-            priority: 10
-          },
-          common: {
-            name: "common",
-            chunks: "async",
-            minChunks: 2,
-            // 'enforce': true, // throws error
-            priority: 5
-          }
-          // 'vendors': false, // throws error
-          // 'defaultVendors': false // throws error
-        }
-      }
-    },
+    optimization: {},
+    //    optimization: {
+    //      runtimeChunk: false,
+    //      minimize: true,
+    //      splitChunks: {
+    // 'maxAsyncRequests': null, // throws error
+    //        cacheGroups: {
+    //          default: {
+    //            chunks: "async",
+    //            minChunks: 2,
+    //            priority: 10
+    //          },
+    //          common: {
+    //            name: "common",
+    //            chunks: "async",
+    //            minChunks: 2,
+    //            // 'enforce': true, // throws error
+    //            priority: 5
+    //          }
+    // 'vendors': false, // throws error
+    // 'defaultVendors': false // throws error
+    //        }
+    //      }
+    //    },
     builtins: {
       define: {
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
@@ -124,10 +125,11 @@ module.exports = composePlugins(withNx(), withWeb(), (baseConfig, ctx) => {
                 "@angular-devkit/build-angular/src/babel/webpack-loader.js"
               ),
               options: {
-                cacheDirectory: path.join(
-                  __dirname,
-                  "/.angular/cache/15.2.4/babel-webpack"
-                ),
+                //                cacheDirectory: path.join(
+                //                 __dirname,
+                //                "/.angular/cache/15.2.4/babel-webpack"
+                //             ),
+                cacheDirectory: false,
                 aot: true,
                 optimize: true,
                 supportedBrowsers: [
