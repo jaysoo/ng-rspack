@@ -22,3 +22,8 @@ Using [`hyperfine`](https://github.com/sharkdp/hyperfine).
 hyperfine --warmup 3 --min-runs 100 -n "Angular Devkit" "nx build --skip-nx-cache" -n "Rspack" "nx build-rs --skip-nx-cache"
 ```
 
+After installing Hyperfine, you can also compare the standard Angular Webpack and EsBuilder builder with the rspack CLI Builder
+
+```shell
+npm run bench
+```

@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "bench": "hyperfine --prepare 'rm -rf node_modules/.cache .angular/' --min-runs 10 -n 'Angular Webpack' 'yarn nx build -- --skip-nx-cache' -n 'Angular ESBuild' 'yarn nx build-esbuild -- --skip-nx-cache' -n 'rspack CLI Builder' 'yarn nx build-rs-cli -- --skip-nx-cache'"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +27,8 @@
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~16.0.0",
+    "@angular-devkit/build-angular": "file:./artifacts/build-angular",
+    "@angular-devkit/build-webpack": "file:./artifacts/build-webpack",
     "@angular-devkit/core": "~16.0.0",
     "@angular-devkit/schematics": "~16.0.0",
     "@angular-eslint/eslint-plugin": "~15.0.0",
