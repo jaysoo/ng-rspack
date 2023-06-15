@@ -7,44 +7,116 @@
   "tags": [],
   "targets": {
     "build-rs": {
-      "executor": "@nx/rspack:rspack",
+      "executor": "@angular-devkit/build-angular:browser-rspack",
       "outputs": [
         "{options.outputPath}"
       ],
-      "defaultConfiguration": "production",
       "options": {
-        "target": "web",
-        "outputPath": "dist/demo-rs",
-        "main": "src/main.ts",
-        "tsConfig": "tsconfig.app.json",
-        "rspackConfig": "rspack.config.js",
+        "outputPath": "dist/demo",
+        "index": "./src/index.html",
+        "main": "./src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "./tsconfig.app.json",
         "assets": [
-          "src/favicon.ico",
-          "src/assets"
-        ]
+          "./src/favicon.ico",
+          "./src/assets"
+        ],
+        "styles": [],
+        "scripts": []
       },
       "configurations": {
-        "development": {
-          "mode": "development"
-        },
         "production": {
-          "mode": "production",
-          "optimization": true,
-          "sourceMap": false
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "700kb",
+              "maximumError": "3mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
         }
-      }
+      },
+      "defaultConfiguration": "production"
     },
     "serve-rs": {
-      "executor": "@nx/rspack:dev-server",
+      "executor": "@angular-devkit/build-angular:dev-server-rspack",
+      "configurations": {
+        "production": {
+          "browserTarget": "demo:build:production"
+        },
+        "development": {
+          "browserTarget": "demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "demo:build-rs:development"
+        "buildTarget": "demo:build"
+      }
+    },
+    "build-es": {
+      "executor": "@angular-devkit/build-angular:browser-esbuild",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/demo",
+        "index": false,
+        "main": "./src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "./tsconfig.app.json",
+        "assets": [
+          "./src/favicon.ico",
+          "./src/assets"
+        ],
+        "styles": [],
+        "scripts": []
       },
       "configurations": {
-        "development": {},
         "production": {
-          "buildTarget": "demo:build-rs:production"
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
         }
-      }
+      },
+      "defaultConfiguration": "production"
     },
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
